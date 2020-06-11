@@ -15,29 +15,12 @@ import SplashScreen from 'react-native-splash-screen';
 
 import PreLoading from './src/components/uikit/Loading';
 
-import AsyncStorage from '@react-native-community/async-storage';
-
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      isReady: false,
-      navTo: 'Opportunity',
-    };
-
     Text.defaultProps = Text.defaultProps || {};
     Text.defaultProps.allowFontScaling = false;
-
-    AsyncStorage.getItem('Language').then(val => {
-      if (val) this.setState({
-        navTo: {
-          initialRouteName: 'Home',
-          isCustomHeader: 1,
-        },
-      });
-      setI18nConfig().then(isReady => this.setState({isReady}));
-    });
   }
 
   componentDidMount() {
